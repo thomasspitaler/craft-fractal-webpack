@@ -1,0 +1,40 @@
+{
+  "name": "craft-fractal-webpack",
+  "version": "0.1.0",
+  "private": true,
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "webpack": "webpack",
+    "fractal": "fractal start",
+    "dev": "concurrently 'npm:webpack -- --mode development -w' 'npm:fractal -- --sync'",
+    "components:copy": "cpx \"src/components/**/[^_]*.twig\" templates/components",
+    "components:map": "node build-utils/build-components-map.js",
+    "components": "npm run components:copy && npm run components:map"
+  },
+  "author": "Thomas Spitaler",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "@frctl/fractal": "^1.1.7",
+    "@frctl/twig": "^1.0.0-beta.4",
+    "babel-loader": "^8.0.4",
+    "concurrently": "^4.1.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "cpx": "^1.5.0",
+    "css-loader": "^2.0.1",
+    "glob": "^7.1.3",
+    "mini-css-extract-plugin": "^0.5.0",
+    "onchange": "^5.2.0",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {},
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}

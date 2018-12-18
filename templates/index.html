@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Craft Template</title>
+    {% includeCssFile '/main.css' %}
+    {% includeJsFile '/main.js' %}
+</head>
+<body>
+    <h1>Craft Template</h1>
+    {% include '@blockquote' with {
+        'text': 'Some clever line.',
+        'citation': 'Some clever guy'
+    } %}
+</body>
+</html>

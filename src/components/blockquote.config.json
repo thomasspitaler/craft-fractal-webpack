@@ -1,0 +1,8 @@
+{
+    "title": "A simple blockquote component",
+    "status": "wip",
+    "context": {
+        "text": "Some clever line.",
+        "citation": "Smart guy"
+    }
+}
