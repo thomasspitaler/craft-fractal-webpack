@@ -28,7 +28,7 @@ and install the plugin in the Craft control panel.
 
 ## Watching and Building
 
-The components to be built are located in the directory `src/components`.
+The components to be built are located in the directory `src/components`, and the build output will be located in the `build` directory.
 
 To start a build run:
 
@@ -36,21 +36,21 @@ To start a build run:
 npm run dev
 ```
 
-This will launch webpack in watch mode (`-w` option), as well as Fractal with the `--sync` option. Visit http://localhost:3000 to access the Fractal server.
-
-The entry point of the build process is `src/index.js`, and the files `web/main.js` and `web/main.css` are created, which contain the scripts and styles compiled by webpack, respectively.
+This will create and copy assets to `build`. Webpack is launched in watch mode (`-w` option), and Fractal is run with the `--sync` option. Visit http://localhost:3000 to access the Fractal server.
 
 ## Providing the Components to Craft cms
 
-To use the components in Craft cms, run:
+To deploy the components for use in Craft cms, run:
 
 ```
-npm run compoments
+npm run deploy
 ```
 
-This will copy all the `.twig` files in `src/components` to `templates/components`, preserving the directory structure.
+This will copy all the `.twig` files in `build` to `templates`, preserving the directory structure.
 
-A `components-map.json` file required by the Fractal plugin for Craft 3 will also be created.
+JavaScript and CSS assets will be copied from `build` to `web`.
+
+The `components-map.json` file required by the Fractal plugin for Craft 3 will be copied from `build` to the project root directory.
 
 For an example of how to use the components in your Craft cms templates, see `templates/index.html`:
 

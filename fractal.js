@@ -28,7 +28,7 @@ fractal.docs.set('path', path.join(__dirname, 'src/docs'));
 /*
  * Tell the Fractal web preview plugin where to look for static assets.
  */
-fractal.web.set('static.path', path.join(__dirname, 'web'));
+fractal.web.set('static.path', path.join(__dirname, 'build'));
 
 /*
  * Twig templates
