@@ -1,6 +1,7 @@
 const path = require('path');
 const glob = require('glob');
 const fs = require('fs');
+var shell = require('shelljs');
 
 /*
  * Creates a component map as required by the Craft cms plugin
@@ -14,9 +15,17 @@ const fs = require('fs');
  *  }
  */
 
-const filesSrcDir = path.join(__dirname, '../src');
+const argv = process.argv;
+
+if (argv.length !== 4) {
+    console.log('usage: create-components-map <src-dir> <map-file-name.json>');
+    process.exit(2);
+    return;
+}
+
+const filesSrcDir = path.resolve(argv[2]);
+const mapFile = path.resolve(argv[3]);
 const filesPattern = path.join('**/*.twig');
-const mapFile = path.join(__dirname, '../components-map.json');
 
 const options = {
     cwd:filesSrcDir
@@ -27,7 +36,7 @@ glob(filesPattern, options, processFiles);
 function processFiles(err, files) {
     if (err) {
         console.log(err);
-        process.exit(1);
+        process.exit(2);
         return;
     }
 
@@ -53,5 +62,7 @@ function buildMap(files) {
 
 /* writes the map to filePath */
 function writeMapFile(map, filePath) {
+    const dir = path.dirname(filePath);
+    shell.mkdir('-p', dir);
     fs.writeFileSync(filePath, JSON.stringify(map, null, 2) , 'utf-8');
 }
